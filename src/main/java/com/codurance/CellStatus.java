@@ -1,4 +1,6 @@
 package com.codurance;
 
-public enum DEAD {
+public enum CellStatus {
+
+    ALIVE, DEAD
 }

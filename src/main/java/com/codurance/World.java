@@ -1,24 +1,14 @@
 package com.codurance;
 
-import java.util.Objects;
+import java.util.*;
 
 public class World {
-    private final CellPosition cellPosition;
-    private final Cell cell;
 
-    public World(CellPosition cellPosition, Cell cell) {
+    private Map<CellPosition, Cell> cells;
 
-        this.cellPosition = cellPosition;
-        this.cell = cell;
-    }
+    public World() {
+        this.cells = new HashMap<>();
 
-
-    @Override
-    public String toString() {
-        return "World{" +
-                "cellPosition=" + cellPosition +
-                ", cell=" + cell +
-                '}';
     }
 
     @Override
@@ -26,16 +16,26 @@ public class World {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         World world = (World) o;
-        return cellPosition.equals(world.cellPosition) &&
-                cell.equals(world.cell);
+        return cells.equals(world.cells);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cellPosition, cell);
+        return Objects.hash(cells);
+    }
+
+    @Override
+    public String toString() {
+        return "World{" +
+                "cells=" + cells +
+                '}';
     }
 
     public void tick() {
-        this.cell.die();
+        this.cells.values().forEach(Cell::die);
+    }
+
+    public void addCell(CellPosition cellPosition, Cell cell) {
+        cells.put(cellPosition, cell);
     }
 }

@@ -12,6 +12,9 @@ public class GameOfLifeShould {
     a_cell_without_living_neighbours_should_die() {
 
         World world = new World(new CellPosition(0,0), new Cell(CellStatus.ALIVE));
+
+        world.tick();
+
         assertEquals(new World(new CellPosition(0,0), new Cell(CellStatus.DEAD)), world);
     }
 }

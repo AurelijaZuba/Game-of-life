@@ -12,6 +12,7 @@ public class World {
         this.cell = cell;
     }
 
+
     @Override
     public String toString() {
         return "World{" +
@@ -32,5 +33,9 @@ public class World {
     @Override
     public int hashCode() {
         return Objects.hash(cellPosition, cell);
+    }
+
+    public void tick() {
+        this.cell.die();
     }
 }

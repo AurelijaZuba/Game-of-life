@@ -28,4 +28,8 @@ public class Cell {
                 "status=" + status +
                 '}';
     }
+
+    public void die() {
+        this.status = CellStatus.DEAD;
+    }
 }
